@@ -23,7 +23,6 @@ class CrearTablaPersona extends Migration
             $table->char('dni',8)->nullable();
             $table->string('direccion', 80)->nullable();;
             $table->date('fecha_nacimiento')->nullable();
-            $table->integer('edad');
             $table->char('sexo', 1); // M->Masculino, F->Femenino
             $table->char('estado_civil', 1); // S->Soltero, C=>Casado, V=>Viudo, D=>Divorciado
             $table->string('ocupacion', 80)->nullable();

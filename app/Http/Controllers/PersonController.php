@@ -89,7 +89,7 @@ class PersonController extends Controller
         $entidad          = 'Persona';
         $title            = $this->tituloAdmin;
         $titulo_registrar = $this->tituloRegistrar;
-        $cboTipo        = [''=>'Todo']+ array('S'=>'Socio','C' => 'Cliente', 'SC' => 'Socio/Cliente');
+        $cboTipo        = [''=>'Todo']+ array('S'=>'Socio', 'SC' => 'Socio/Cliente');
         $cboSexo        = [''=>'Seleccione']+ array('M'=>'Masculino','F' => 'Femenino');
         $cboEstadoCivil        = [''=>'Seleccione']+ array('S'=>'Soltero','C' => 'Casado', 'V' => 'Viudo');
         $ruta             = $this->rutas;
@@ -106,7 +106,7 @@ class PersonController extends Controller
         $listar         = Libreria::getParam($request->input('listar'), 'NO');
         $entidad        = 'Persona';
         $persona        = null;
-        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio','C' => 'Cliente', 'SC' => 'Socio/Cliente');
+        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio', 'SC' => 'Socio/Cliente');
         $cboSexo        = [''=>'Seleccione']+ array('M'=>'Masculino','F' => 'Femenino');
         $cboEstadoCivil        = [''=>'Seleccione']+ array('S'=>'Soltero','C' => 'Casado', 'V' => 'Viudo');
         $formData       = array('persona.store');
@@ -132,7 +132,6 @@ class PersonController extends Controller
             'fecha_nacimiento'    => 'required|max:100',
             'sexo'    => 'required|max:100',
             'ocupacion'    => 'required|max:100',
-            'edad'    => 'required|max:100',
             'tipo'    => 'required|max:5',
             'direccion'    => 'required|max:100',
             'ingreso_personal'    => 'required|max:20',
@@ -154,7 +153,6 @@ class PersonController extends Controller
             $perosna->numero_acciones        = $request->input('numero_acciones');
             $perosna->direccion        = $request->input('direccion');
             $perosna->fecha_nacimiento        = $request->input('fecha_nacimiento');
-            $perosna->edad        = $request->input('edad');
             $perosna->sexo        = $request->input('sexo');
             $perosna->estado_civil        = $request->input('estado_civil');
             $perosna->ocupacion        = $request->input('ocupacion');
@@ -194,7 +192,7 @@ class PersonController extends Controller
             return $existe;
         }
         $listar         = Libreria::getParam($request->input('listar'), 'NO');
-        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio','C' => 'Cliente', 'SC' => 'Socio/Cliente');
+        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio', 'SC' => 'Socio/Cliente');
         $cboSexo        = [''=>'Seleccione']+ array('M'=>'Masculino','F' => 'Femenino');
         $cboEstadoCivil        = [''=>'Seleccione']+ array('S'=>'Soltero','C' => 'Casado', 'V' => 'Viudo');
         $persona        = Persona::find($id);
@@ -226,7 +224,6 @@ class PersonController extends Controller
             'fecha_nacimiento'    => 'required|max:100',
             'sexo'    => 'required|max:100',
             'ocupacion'    => 'required|max:100',
-            'edad'    => 'required|max:100',
             'tipo'    => 'required|max:5',
             'direccion'    => 'required|max:100',
             'ingreso_personal'    => 'required|max:20',
@@ -248,7 +245,6 @@ class PersonController extends Controller
             $perosna->numero_acciones        = $request->input('numero_acciones');
             $perosna->direccion        = $request->input('direccion');
             $perosna->fecha_nacimiento        = $request->input('fecha_nacimiento');
-            $perosna->edad        = $request->input('edad');
             $perosna->sexo        = $request->input('sexo');
             $perosna->estado_civil        = $request->input('estado_civil');
             $perosna->ocupacion        = $request->input('ocupacion');

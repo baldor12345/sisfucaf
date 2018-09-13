@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'cookie' => 'peluqueria_session',
+    'cookie' => 'sisfucaf_session',
 
     /*
     |--------------------------------------------------------------------------

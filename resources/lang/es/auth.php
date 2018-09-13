@@ -15,5 +15,5 @@ return [
 
     'failed'   => 'Estas credenciales no coinciden con nuestros registros o no estan activas',
     'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
-    'ruc'   => 'RUC no coincide con nuestros registros o no esta activo',
+    'ruc'   => 'DNI no coincide con nuestros registros o no esta activo',
 ];

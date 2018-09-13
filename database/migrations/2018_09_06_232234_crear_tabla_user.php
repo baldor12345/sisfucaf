@@ -18,7 +18,7 @@ class CrearTablaUser extends Migration
             $table->string('nombres', 80);
             $table->string('apellidos', 100);
             $table->string('dni', 10)->unique();
-            $table->string('login',60);
+            $table->string('login',400);
             $table->string('password',100);
             $table->string('telefono',18)->nullable();
             $table->string('email',60)->nullable();

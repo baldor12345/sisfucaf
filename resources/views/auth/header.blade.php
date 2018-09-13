@@ -8,7 +8,7 @@
 
     <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
-    <title>SISTEMA PELUQUERIA</title>
+    <title>SISTEMA FUCAF</title>
 
     {!! Html::style('assets/css/bootstrap.min.css') !!}
     {!! Html::style('assets/css/core.css') !!}

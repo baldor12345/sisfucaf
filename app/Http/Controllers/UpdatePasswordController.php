@@ -70,7 +70,8 @@ class UpdatePasswordController extends Controller
             if (Hash::check($request->mypassword, Auth::user()->password) && !Hash::check($request->password, Auth::user()->password) ){
                 $error = DB::transaction(function() use($request, $id){
                     $usuario           = User::find($id);
-                    $usuario->password = bcrypt($request->get('new-password'));
+                    $usuario->password = bcrypt($request->password);
+                   // $usuario->password = bcrypt($request->get('new-password'));
                     $usuario->save();
                 });
                 return is_null($error) ? "OK" : $error;

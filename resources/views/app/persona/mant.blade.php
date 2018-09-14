@@ -81,9 +81,21 @@
 </div>
 
 <div class="form-row">
+    <div class="form-group col-md-6 col-sm-6">
+		{!! Form::label('ingreso_personal', 'Ingreso personal:', array('class' => '')) !!}
+		{!! Form::text('ingreso_personal', null, array('class' => 'form-control input-xs', 'id' => 'ingreso_personal', 'placeholder' => '')) !!}
+
+    </div>
+    <div class="form-group col-md-6 col-sm-6" style="margin-left: 25px;">
+		{!! Form::label('ingreso_familiar', 'Ingreso familiar:', array('class' => '')) !!}
+		{!! Form::text('ingreso_familiar', null, array('class' => 'form-control input-xs', 'id' => 'ingreso_familiar', 'placeholder' => '')) !!}
+    </div>
+</div>
+
+<div class="form-row">
     <div class="form-group col-md-4 col-sm-4">
-			{!! Form::label('tipo', 'Tipo:', array('class' => '')) !!}
-			{!! Form::select('tipo', $cboTipo, null, array('class' => 'form-control input-xs', 'id' => 'tipo')) !!}
+			{!! Form::label('tipo', 'Tipo:', array('class' => 'input-sm')) !!}
+			{!! Form::select('tipo', $cboTipo, null, array('class' => 'form-control input-sm', 'id' => 'tipo')) !!}
     </div>
     <div class="form-group col-md-4 col-sm-4" style="margin-left: 12.5px;">
 			{!! Form::label('fechai', 'Fecha de Inicio:', array('class' => '')) !!}
@@ -95,16 +107,8 @@
     </div>
 </div>
 
-<div class="form-row">
-    <div class="form-group col-md-6 col-sm-6">
-			{!! Form::label('ingreso_personal', 'Ingreso personal:', array('class' => '')) !!}
-			{!! Form::text('ingreso_personal', null, array('class' => 'form-control input-xs', 'id' => 'ingreso_personal', 'placeholder' => '')) !!}
-    </div>
-    <div class="form-group col-md-6 col-sm-6" style="margin-left: 25px;">
-			{!! Form::label('ingreso_familiar', 'Ingreso familiar:', array('class' => '')) !!}
-			{!! Form::text('ingreso_familiar', null, array('class' => 'form-control input-xs', 'id' => 'ingreso_familiar', 'placeholder' => '')) !!}
-    </div>
-</div>
+
+
 
 <div class="form-group">
 	<div class="col-lg-12 col-md-12 col-sm-12 text-right">

@@ -60,9 +60,9 @@ class LoginController extends Controller
         }
 
         $credentials = $this->credentials($request);
-        $user = User::where('dni','=',$request->login)->first();
+        $user = User::where('login','=',$request->login)->first();
         if(count($user)>0){
-            if ($this->guard()->attempt(['login' => $request->login, 'password' => $request->password, 'dni' => $user->dni], $request->has('remember'))){
+            if ($this->guard()->attempt(['login' => $request->login, 'password' => $request->password, 'login' => $user->login], $request->has('remember'))){
                 return $this->sendLoginResponse($request);
             }else{
                 return $this->sendFailedLoginResponse($request);

@@ -21,13 +21,15 @@ class UsertypeSeeder extends Seeder
 					'updated_at' => $now
 				)
 			));
+
 		DB::table('usertype')->insert(array(
 				array(
-					'name' => 'ADMINISTRADOR',
+					'name' => 'TESORERO',
 					'created_at' => $now,
 					'updated_at' => $now
 				)
 			));
+			/*
 		DB::table('usertype')->insert(array(
 				array(
 					'name' => 'EMPLEADO',
@@ -35,5 +37,6 @@ class UsertypeSeeder extends Seeder
 					'updated_at' => $now
 				)
 			));
+			*/
     }
 }

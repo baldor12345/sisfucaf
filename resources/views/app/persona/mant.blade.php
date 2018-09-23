@@ -42,6 +42,7 @@
     </div>
 </div>
 
+</div>
 
 <div class="form-row">
     <div class="form-group col-md-6 col-sm-6">
@@ -105,6 +106,29 @@
 			{!! Form::label('numero_acciones', 'Numero de acciones:', array('class' => '')) !!}
 			{!! Form::number('numero_acciones', null, array('class' => 'form-control input-xs', 'id' => 'numero_acciones', 'placeholder' => '')) !!}
     </div>
+</div>
+
+
+<div id="datos_apoderado">
+		<legend>Datos del Apoderado:</legend>
+		<div class="form-row">
+			{!! Form::label('nombres_apoderado', 'Nombres y Apellidos del apoderado:', array('class' => '')) !!}
+			{!! Form::text('nombres_apoderado', null, array('class' => 'form-control input-xs', 'id' => 'nombres_apoderado', 'placeholder' => 'Ingrese Nombres y apellidos del apoderado...')) !!}
+		</div>
+
+		<div class="form-row">
+		<div class="form-group col-md-3 col-sm-3">
+				{!! Form::label('dni_apoderado', 'DNI', array('class' => '')) !!}
+				{!! Form::text('dni_apoderado', null, array('class' => 'form-control input-xs input-number', 'id' => 'dni_apoderado', 'placeholder' => 'Ingrese DNI', 'maxlength' => '8')) !!}
+		</div>
+		<div class="form-group col-md-3 col-sm-3" style="margin-left: 12.5px;">
+				{!! Form::label('telefono_fijo_apoderado', 'Telefono', array('class' => '')) !!}
+				{!! Form::text('telefono_fijo_apoderado', null, array('class' => 'form-control input-xs input-number', 'id' => 'telefono_fijo_apoderado', 'placeholder' => 'Ingrese telefono', 'maxlength' => '15')) !!}
+		</div>
+			<div class="form-group col-md-6 col-sm-6" style="margin-left: 12.5px;">
+				{!! Form::label('direccion_apoderado', 'Direccion ', array('class' => '')) !!}
+				{!! Form::text('direccion_apoderado', null, array('class' => 'form-control input-xs', 'id' => 'direccion_apoderado', 'placeholder' => 'Ingrese direccion')) !!}
+		</div>
 </div>
 
 

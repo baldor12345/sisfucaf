@@ -14,29 +14,23 @@ class UserSeeder extends Seeder
     {
         $now = new DateTime;
 		$usertype_id = DB::table('usertype')->where('name', '=', 'ADMINISTRADOR PRINCIPAL')->first()->id;
+		$persona_id = DB::table('persona')->where('dni','=','12345678')->first()->id;
 		DB::table('user')->insert(array(
-				'nombres'		=>'Baldor',
-				'apellidos'		=>'Manayay',
-				'dni'		=>'12345678',
-				'login'          => '12345678',
+				'login'          => 'admin',
 				'password'       => Hash::make('123456'),
-				'telefono'		=>'123456789',
-				'email'		=>'Baldor@gmail.com',
 				'fechai'	=>'2018-09-08',
+				'persona_id'	 => $persona_id,
 				'usertype_id' => $usertype_id,
 				'created_at'     => $now,
 				'updated_at'     => $now
 			));
-		$usertype_id = DB::table('usertype')->where('name', '=', 'EMPLEADO')->first()->id;
+		$usertype_id = DB::table('usertype')->where('name', '=', 'TESORERO')->first()->id;
+		$persona_id = DB::table('persona')->where('dni','=','12345679')->first()->id;
 		DB::table('user')->insert(array(
-				'nombres'		=>'Azorin',
-				'apellidos'		=>'Manayay',
-				'dni'		=>'12345679',
-				'login'          => '12345679',
+				'login'          => '12345678',
 				'password'       => Hash::make('123456'),
-				'telefono'		=>'123456789',
-				'email'		=>'azorin@gmail.com',
 				'fechai'	=>'2018-09-08',
+				'persona_id'	 => $persona_id,
 				'usertype_id' => $usertype_id,
 				'created_at'     => $now,
 				'updated_at'     => $now

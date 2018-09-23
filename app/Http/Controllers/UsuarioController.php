@@ -8,6 +8,7 @@ use Hash;
 use Validator;
 use App\Http\Requests;
 use App\User;
+use App\Persona;
 use App\Usertype;
 use App\Librerias\Libreria;
 use App\Http\Controllers\Controller;
@@ -101,11 +102,12 @@ class UsuarioController extends Controller
         $listar         = Libreria::getParam($request->input('listar'), 'NO');
         $entidad        = 'Usuario';
         $usuario        = null;
+        $cboPersona = array('' => 'Seleccione') + Persona::pluck('nombres', 'id')->all();
         $cboTipousuario = array('' => 'Seleccione') + Usertype::pluck('name', 'id')->all();
         $formData       = array('usuario.store');
         $formData       = array('route' => $formData, 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton          = 'Registrar'; 
-        return view($this->folderview.'.mant')->with(compact('usuario', 'formData', 'entidad', 'boton', 'listar', 'cboTipousuario'));
+        return view($this->folderview.'.mant')->with(compact('usuario', 'formData', 'entidad', 'boton', 'listar', 'cboTipousuario','cboPersona'));
     }
 
     /**
@@ -118,14 +120,11 @@ class UsuarioController extends Controller
     {
         $listar     = Libreria::getParam($request->input('listar'), 'NO');
         $reglas = array(
-            'nombres'    => 'required|max:100',
-            'apellidos'    => 'required|max:100',
-            'dni'    => 'required|unique:user,dni,NULL,id,deleted_at,NULL|regex:/^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/',
             'login'       => 'required|max:20|unique:user,login,NULL,id,deleted_at,NULL',
             'password'    => 'required|max:20',
-            'email'    => 'required|max:100',
-            'fechai'    => 'required|date_format:d/m/Y',
-            'usertype_id' => 'required|integer|exists:usertype,id,deleted_at,NULL'
+            'fechai'    => 'required',
+            'persona_id' => 'required|integer|exists:user,id,deleted_at,NULL',
+            'usertype_id' => 'required|integer|exists:user,id,deleted_at,NULL'
             );
         $validacion = Validator::make($request->all(),$reglas);
         if ($validacion->fails()) {
@@ -133,13 +132,9 @@ class UsuarioController extends Controller
         }
         $error = DB::transaction(function() use($request){
             $usuario               = new User();
-            $usuario->nombres        = $request->input('nombres');
-            $usuario->apellidos        = $request->input('apellidos');
-            $usuario->dni        = $request->input('dni');
+            $usuario->persona_id       = $request->input('persona_id');
             $usuario->login        = $request->input('login');
             $usuario->password     = Hash::make($request->input('password'));
-            $usuario->telefono       = $request->input('telefono');
-            $usuario->email       = $request->input('email');
             $usuario->fechai       = $request->input('fechai');
             $usuario->usertype_id  = $request->input('usertype_id');
             $usuario->save();
@@ -171,13 +166,14 @@ class UsuarioController extends Controller
             return $existe;
         }
         $listar         = Libreria::getParam($request->input('listar'), 'NO');
+        $cboPersona = array('' => 'Seleccione') + Persona::pluck('nombres', 'id')->all();
         $cboTipousuario = array('' => 'Seleccione') + Usertype::pluck('name', 'id')->all();
         $usuario        = User::find($id);
         $entidad        = 'Usuario';
         $formData       = array('usuario.update', $id);
         $formData       = array('route' => $formData, 'method' => 'PUT', 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton          = 'Modificar';
-        return view($this->folderview.'.mant')->with(compact('usuario', 'formData', 'entidad', 'boton', 'listar', 'cboTipousuario'));
+        return view($this->folderview.'.mant')->with(compact('usuario', 'formData', 'entidad', 'boton', 'listar', 'cboTipousuario','cboPersona'));
     }
 
     /**
@@ -195,13 +191,10 @@ class UsuarioController extends Controller
         }
         $reglas = array(
             'login'       => 'required|max:20|unique:user,login,'.$id.',id,deleted_at,NULL',
-            'nombres'    => 'required|max:100',
-            'apellidos'    => 'required|max:100',
-            'dni'    => 'required|regex:/^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/',
             'password'    => 'required|max:20',
-            'email'    => 'required|max:100',
-            'fechai'    => 'required|date_format:d/m/Y',
-            'usertype_id' => 'required|integer|exists:usertype,id,deleted_at,NULL'
+            'fechai'    => 'required',
+            'persona_id' => 'required|integer|exists:user,id,deleted_at,NULL',
+            'usertype_id' => 'required|integer|exists:user,id,deleted_at,NULL'
             );
         $validacion = Validator::make($request->all(),$reglas);
         if ($validacion->fails()) {
@@ -209,16 +202,12 @@ class UsuarioController extends Controller
         } 
         $error = DB::transaction(function() use($request, $id){
             $usuario                 = User::find($id);
-            $usuario->nombres        = $request->input('nombres');
-            $usuario->apellidos        = $request->input('apellidos');
-            $usuario->dni        = $request->input('dni');
+            $usuario->persona_id       = $request->input('persona_id');
             $usuario->login        = $request->input('login');
             if ($request->input('password') != null && $request->input('password') != '') {
                 $usuario->password = Hash::make($request->input('password'));
             }
             $usuario->password     = Hash::make($request->input('password'));
-            $usuario->telefono       = $request->input('telefono');
-            $usuario->email       = $request->input('email');
             $usuario->fechai       = $request->input('fechai');
             $usuario->usertype_id = $request->input('usertype_id');
             $usuario->save();

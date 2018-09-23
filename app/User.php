@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Usertype', 'usertype_id');
     }
 
+    public function persona()
+    {
+        return $this->belongsTo('App\Persona', 'persona_id');
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new UserResetPasswordNotification($token));

@@ -51,8 +51,8 @@ class MenuoptionSeeder extends Seeder
 
 		$datos = array(
 				array(
-					'name' => 'Categorias',
-					'link'   => 'category'
+					'name' => 'Caja',
+					'link'   => 'caja'
 				),
 				/*
 				array(
@@ -85,19 +85,22 @@ class MenuoptionSeeder extends Seeder
 		$menuoptioncategory_id = DB::table('menuoptioncategory')->where('name', '=', 'Mantenimiento')->first()->id;
 
 		$datos = array(
-				/*
 				array(
-					'name' => 'Tipo trabajador',
-					'link'   => 'workertype'
+					'name' => 'Propiedades',
+					'link'   => 'propiedades'
 				),
-				*/
+				
 				array(
 					'name' => 'Personas',
 					'link'   => 'persona'
 				),
 				array(
-					'name' => 'Proceso de credito',
-					'link'   => 'proceso_de_credito'
+					'name' => 'Acciones',
+					'link'   => 'accion'
+				),
+				array(
+					'name' => 'Creditos',
+					'link'   => 'creditos'
 				),
 			);
 

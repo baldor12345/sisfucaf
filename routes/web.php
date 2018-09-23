@@ -44,10 +44,6 @@ Route::group(['middleware' => 'auth'], function () {
         return View::make('dashboard.home');
     });
 
-    /* CAMBIAR CONTRASEÑA*/
-    Route::resource('updatepassword', 'UpdatePasswordController', array('except' => array('show')));
-
-
     Route::post('trabajador/buscar','TrabajadorController@buscar')->name('trabajador.buscar');
     Route::get('trabajador/eliminar/{id}/{listarluego}','TrabajadorController@eliminar')->name('trabajador.eliminar');
     Route::resource('trabajador', 'TrabajadorController', array('except' => array('show')));
@@ -55,6 +51,39 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('sucursal/buscar','SucursalController@buscar')->name('sucursal.buscar');
     Route::get('sucursal/eliminar/{id}/{listarluego}','SucursalController@eliminar')->name('sucursal.eliminar');
     Route::resource('sucursal', 'SucursalController', array('except' => array('show')));
+
+
+    Route::post('workertype/buscar', 'WorkertypeController@buscar')->name('workertype.buscar');
+    Route::get('workertype/eliminar/{id}/{listarluego}', 'WorkertypeController@eliminar')->name('workertype.eliminar');
+    Route::resource('workertype', 'WorkertypeController', array('except' => array('show')));
+
+    Route::post('employee/buscar', 'EmployeeController@buscar')->name('employee.buscar');
+    Route::get('employee/eliminar/{id}/{listarluego}', 'EmployeeController@eliminar')->name('employee.eliminar');
+    Route::resource('employee', 'EmployeeController', array('except' => array('show')));
+
+
+    /* PROVIDERS */
+    Route::post('provider/search', 'ProviderController@search')->name('provider.search');
+    Route::get('provider/eliminar/{id}/{listarluego}', 'ProviderController@eliminar')->name('provider.eliminar');
+    Route::resource('provider', 'ProviderController', array('except' => array('show')));
+
+    /* COMPANY */
+    Route::post('company/search', 'CompanyController@search')->name('company.search');
+    Route::get('company/eliminar/{id}/{listarluego}', 'CompanyController@eliminar')->name('company.eliminar');
+    Route::resource('company', 'CompanyController', array('except' => array('show')));
+
+
+    /*PERSON*/
+    Route::post('person/search', 'PersonController@search')->name('person.search');
+    Route::get('person/employeesautocompleting/{searching}', 'PersonController@employeesautocompleting')->name('person.employeesautocompleting');
+    Route::get('person/providersautocompleting/{searching}', 'PersonController@providersautocompleting')->name('person.providersautocompleting');
+    Route::get('person/customersautocompleting/{searching}', 'PersonController@customersautocompleting')->name('person.customersautocompleting');
+
+
+    /*--------------------------------------------- */
+
+    /* CAMBIAR CONTRASEÑA*/
+    Route::resource('updatepassword', 'UpdatePasswordController', array('except' => array('show')));
 
     Route::post('categoria/buscar','CategoriaController@buscar')->name('categoria.buscar');
     Route::get('categoria/eliminar/{id}/{listarluego}','CategoriaController@eliminar')->name('categoria.eliminar');
@@ -77,25 +106,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('tipousuario', 'TipousuarioController', array('except' => array('show')));
     Route::get('tipousuario/pdf', 'TipousuarioController@pdf')->name('tipousuario.pdf');
 
-    Route::post('workertype/buscar', 'WorkertypeController@buscar')->name('workertype.buscar');
-    Route::get('workertype/eliminar/{id}/{listarluego}', 'WorkertypeController@eliminar')->name('workertype.eliminar');
-    Route::resource('workertype', 'WorkertypeController', array('except' => array('show')));
-
-    Route::post('employee/buscar', 'EmployeeController@buscar')->name('employee.buscar');
-    Route::get('employee/eliminar/{id}/{listarluego}', 'EmployeeController@eliminar')->name('employee.eliminar');
-    Route::resource('employee', 'EmployeeController', array('except' => array('show')));
-
-
-    /* PROVIDERS */
-    Route::post('provider/search', 'ProviderController@search')->name('provider.search');
-    Route::get('provider/eliminar/{id}/{listarluego}', 'ProviderController@eliminar')->name('provider.eliminar');
-    Route::resource('provider', 'ProviderController', array('except' => array('show')));
-
-    /* COMPANY */
-    Route::post('company/search', 'CompanyController@search')->name('company.search');
-    Route::get('company/eliminar/{id}/{listarluego}', 'CompanyController@eliminar')->name('company.eliminar');
-    Route::resource('company', 'CompanyController', array('except' => array('show')));
-
     /*USUARIO*/
     Route::post('usuario/buscar', 'UsuarioController@buscar')->name('usuario.buscar');
     Route::get('usuario/eliminar/{id}/{listarluego}', 'UsuarioController@eliminar')->name('usuario.eliminar');
@@ -106,11 +116,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('persona/eliminar/{id}/{listarluego}', 'PersonController@eliminar')->name('persona.eliminar');
     Route::resource('persona', 'PersonController', array('except' => array('show')));
 
-    /*PERSON*/
-    Route::post('person/search', 'PersonController@search')->name('person.search');
-    Route::get('person/employeesautocompleting/{searching}', 'PersonController@employeesautocompleting')->name('person.employeesautocompleting');
-    Route::get('person/providersautocompleting/{searching}', 'PersonController@providersautocompleting')->name('person.providersautocompleting');
-    Route::get('person/customersautocompleting/{searching}', 'PersonController@customersautocompleting')->name('person.customersautocompleting');
+
+
 });
 
 Route::get('provincia/cboprovincia/{id?}', array('as' => 'provincia.cboprovincia', 'uses' => 'ProvinciaController@cboprovincia'));

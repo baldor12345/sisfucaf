@@ -25,7 +25,7 @@ class PermissionSeeder extends Seeder
 					)
 				));
 		}
-		$usertype_id = DB::table('usertype')->where('name', '=', 'ADMINISTRADOR')->first()->id;
+		$usertype_id = DB::table('usertype')->where('name', '=', 'TESORERO')->first()->id;
 		$menuoption_id  = DB::table('menuoption')->where('name', '=', 'Personas')->first()->id;
 		DB::table('permission')->insert(array(
 			array(
@@ -36,7 +36,7 @@ class PermissionSeeder extends Seeder
 				)
 			));
 		
-		$menuoption_id = DB::table('menuoption')->where('name', '=', 'Usuario')->first()->id;
+		$menuoption_id = DB::table('menuoption')->where('name', '=', 'Creditos')->first()->id;
 		DB::table('permission')->insert(array(
 			array(
 				'usertype_id' => $usertype_id,
@@ -45,7 +45,7 @@ class PermissionSeeder extends Seeder
 				'updated_at'     => $now
 				)
 			));
-
+		/*	
 		$usertype_id = DB::table('usertype')->where('name', '=', 'EMPLEADO')->first()->id;
 		$list  = DB::table('menuoption')->where('menuoptioncategory_id', '=', 2)->get();
 		foreach ($list as $key => $value) {
@@ -58,5 +58,6 @@ class PermissionSeeder extends Seeder
 					)
 				));
 		}
+		*/
     }
 }

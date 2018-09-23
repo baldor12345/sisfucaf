@@ -2,24 +2,14 @@
 <div id="divMensajeError{!! $entidad !!}"></div>
 {!! Form::model($usuario, $formData) !!}
 {!! Form::hidden('listar', $listar, array('id' => 'listar')) !!}
-<div class="form-group ">
-	{!! Form::label('nombres', 'Nombres:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
+
+<div class="form-group">
+	{!! Form::label('persona_id', 'Persona:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
 	<div class="col-sm-9 col-xs-12">
-		{!! Form::text('nombres', null, array('class' => 'form-control input-xs', 'id' => 'nombres', 'placeholder' => 'Ingrese Nombres')) !!}
+		{!! Form::select('persona_id', $cboPersona, null, array('class' => 'form-control input-xs', 'id' => 'persona_id')) !!}
 	</div>
 </div>
-<div class="form-group ">
-	{!! Form::label('apellidos', 'Apellidos:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
-	<div class="col-sm-9 col-xs-12">
-		{!! Form::text('apellidos', null, array('class' => 'form-control input-xs', 'id' => 'apellidos', 'placeholder' => 'Ingrese Apellidos')) !!}
-	</div>
-</div>
-<div class="form-group ">
-	{!! Form::label('dni', 'Dni:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
-	<div class="col-sm-9 col-xs-12">
-		{!! Form::text('dni', null, array('class' => 'form-control input-xs', 'id' => 'dni', 'placeholder' => 'Ingrese dni')) !!}
-	</div>
-</div>
+
 <div class="form-group">
 	{!! Form::label('login', 'Usuario:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
 	<div class="col-sm-9 col-xs-12">
@@ -36,18 +26,6 @@
 	{!! Form::label('usertype_id', 'Tipo de usuario:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
 	<div class="col-sm-9 col-xs-12">
 		{!! Form::select('usertype_id', $cboTipousuario, null, array('class' => 'form-control input-xs', 'id' => 'usertype_id')) !!}
-	</div>
-</div>
-<div class="form-group ">
-	{!! Form::label('telefono', 'Telefono:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
-	<div class="col-sm-9 col-xs-12">
-		{!! Form::text('telefono', null, array('class' => 'form-control input-xs', 'id' => 'telefono', 'placeholder' => 'Ingrese telefono')) !!}
-	</div>
-</div>
-<div class="form-group ">
-	{!! Form::label('email', 'E-mail:', array('class' => 'col-sm-3 col-xs-12 control-label')) !!}
-	<div class="col-sm-9 col-xs-12">
-		{!! Form::text('email', null, array('class' => 'form-control input-xs', 'id' => 'email', 'placeholder' => 'Ingrese email')) !!}
 	</div>
 </div>
 

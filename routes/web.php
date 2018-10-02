@@ -116,7 +116,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('persona/eliminar/{id}/{listarluego}', 'PersonController@eliminar')->name('persona.eliminar');
     Route::resource('persona', 'PersonController', array('except' => array('show')));
 
-
+    /*CREDITO*/
+    Route::post('creditos/buscar', 'CreditoController@buscar')->name('creditos.buscar');
+    Route::get('creditos/eliminar/{id}/{listarluego}', 'CreditoController@eliminar')->name('creditos.eliminar');
+    Route::resource('creditos', 'CreditoController', array('except' => array('show')));
 
 });
 

@@ -86,8 +86,8 @@ class MenuoptionSeeder extends Seeder
 
 		$datos = array(
 				array(
-					'name' => 'Propiedades',
-					'link'   => 'propiedades'
+					'name' => 'Configuraciones',
+					'link'   => 'configuraciones'
 				),
 				
 				array(
@@ -96,7 +96,7 @@ class MenuoptionSeeder extends Seeder
 				),
 				array(
 					'name' => 'Acciones',
-					'link'   => 'accion'
+					'link'   => 'acciones'
 				),
 				array(
 					'name' => 'Creditos',

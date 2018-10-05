@@ -116,9 +116,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('persona/eliminar/{id}/{listarluego}', 'PersonController@eliminar')->name('persona.eliminar');
     Route::resource('persona', 'PersonController', array('except' => array('show')));
 
+    /*CONFIGURACIONES*/
+    Route::post('configuraciones/buscar', 'ConfiguracionesController@buscar')->name('configuraciones.buscar');
+    Route::get('configuraciones/eliminar/{id}/{listarluego}', 'Configuraciones@eliminar')->name('configuraciones.eliminar');
+    Route::resource('configuraciones', 'ConfiguracionesController', array('except' => array('show')));
 
+    /*ACCIONES*/
+    Route::post('acciones/buscar', 'AccionesController@buscar')->name('acciones.buscar');
+    Route::resource('acciones', 'AccionesController', array('except' => array('show')));
 
 });
+
+Route::get('personas/{dni?}','AccionesController@getPersona');
+Route::get('acciones/{id?}','AccionesController@getListCantAcciones');
 
 Route::get('provincia/cboprovincia/{id?}', array('as' => 'provincia.cboprovincia', 'uses' => 'ProvinciaController@cboprovincia'));
 Route::get('distrito/cbodistrito/{id?}', array('as' => 'distrito.cbodistrito', 'uses' => 'DistritoController@cbodistrito'));

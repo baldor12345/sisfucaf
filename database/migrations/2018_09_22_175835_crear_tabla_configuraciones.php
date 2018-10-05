@@ -15,9 +15,12 @@ class CrearTablaConfiguraciones extends Migration
     {
         Schema::create('configuraciones', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('codigo', 80)->nullable();
             $table->decimal('precio_accion',10,2);
             $table->decimal('ganancia_accion',10,2);//en porcentaje por cada accion comprada
-            $table->integer('limite_acciones');//limite de accines=20% con respecto a la cantidad total de acciones de la empresa
+            $table->decimal('limite_acciones');//limite de accines=20% con respecto a la cantidad total de acciones de la empresa
+            $table->date('fecha')->nullable();
+            $table->string('descripcion', 200)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -29,8 +29,8 @@
 
 <div class="form-row">
     <div class="form-group col-md-4 col-sm-4">
-			{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento:', array('class' => '')) !!}
-			{!! Form::date('fecha_nacimiento', null, array('class' => 'form-control input-xs', 'id' => 'fecha_nacimiento', 'placeholder' => '')) !!}
+			{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento:', array('class' => '',  'id' => 'datosApoderado')) !!}
+			{!! Form::date('fecha_nacimiento', null, array('class' => 'form-control input-xs fech', 'id' => 'fecha_nacimiento' , 'placeholder' => '','onchange'=>'evaluarFecha();')) !!}
     </div>
     <div class="form-group col-md-4 col-sm-4" style="margin-left: 12.5px;">
 			{!! Form::label('sexo', 'Sexo:', array('class' => '')) !!}
@@ -43,6 +43,10 @@
 </div>
 
 </div>
+
+
+
+
 
 <div class="form-row">
     <div class="form-group col-md-6 col-sm-6">
@@ -94,22 +98,18 @@
 </div>
 
 <div class="form-row">
-    <div class="form-group col-md-4 col-sm-4">
+    <div class="form-group col-md-6 col-sm-6">
 			{!! Form::label('tipo', 'Tipo:', array('class' => 'input-sm')) !!}
 			{!! Form::select('tipo', $cboTipo, null, array('class' => 'form-control input-sm', 'id' => 'tipo')) !!}
     </div>
-    <div class="form-group col-md-4 col-sm-4" style="margin-left: 12.5px;">
+    <div class="form-group col-md-6 col-sm-6" style="margin-left: 25px;">
 			{!! Form::label('fechai', 'Fecha de Inicio:', array('class' => '')) !!}
 			{!! Form::date('fechai', null, array('class' => 'form-control input-xs', 'id' => 'fechai', 'placeholder' => 'Ingrese Fecha inicio...')) !!}
-    </div>
-	<div class="form-group col-md-4 col-sm-4" style="margin-left: 12.5px;">
-			{!! Form::label('numero_acciones', 'Numero de acciones:', array('class' => '')) !!}
-			{!! Form::number('numero_acciones', null, array('class' => 'form-control input-xs', 'id' => 'numero_acciones', 'placeholder' => '')) !!}
     </div>
 </div>
 
 
-<div id="datos_apoderado">
+<div class="form-row" id='oculto' style="display:none;">
 		<legend>Datos del Apoderado:</legend>
 		<div class="form-row">
 			{!! Form::label('nombres_apoderado', 'Nombres y Apellidos del apoderado:', array('class' => '')) !!}
@@ -117,21 +117,20 @@
 		</div>
 
 		<div class="form-row">
-		<div class="form-group col-md-3 col-sm-3">
-				{!! Form::label('dni_apoderado', 'DNI', array('class' => '')) !!}
-				{!! Form::text('dni_apoderado', null, array('class' => 'form-control input-xs input-number', 'id' => 'dni_apoderado', 'placeholder' => 'Ingrese DNI', 'maxlength' => '8')) !!}
-		</div>
-		<div class="form-group col-md-3 col-sm-3" style="margin-left: 12.5px;">
-				{!! Form::label('telefono_fijo_apoderado', 'Telefono', array('class' => '')) !!}
-				{!! Form::text('telefono_fijo_apoderado', null, array('class' => 'form-control input-xs input-number', 'id' => 'telefono_fijo_apoderado', 'placeholder' => 'Ingrese telefono', 'maxlength' => '15')) !!}
-		</div>
+			<div class="form-group col-md-3 col-sm-3">
+					{!! Form::label('dni_apoderado', 'DNI', array('class' => '')) !!}
+					{!! Form::text('dni_apoderado', null, array('class' => 'form-control input-xs input-number', 'id' => 'dni_apoderado', 'placeholder' => 'Ingrese DNI', 'maxlength' => '8')) !!}
+			</div>
+			<div class="form-group col-md-3 col-sm-3" style="margin-left: 12.5px;">
+					{!! Form::label('telefono_fijo_apoderado', 'Telefono', array('class' => '')) !!}
+					{!! Form::text('telefono_fijo_apoderado', null, array('class' => 'form-control input-xs input-number', 'id' => 'telefono_fijo_apoderado', 'placeholder' => 'Ingrese telefono', 'maxlength' => '15')) !!}
+			</div>
 			<div class="form-group col-md-6 col-sm-6" style="margin-left: 12.5px;">
 				{!! Form::label('direccion_apoderado', 'Direccion ', array('class' => '')) !!}
 				{!! Form::text('direccion_apoderado', null, array('class' => 'form-control input-xs', 'id' => 'direccion_apoderado', 'placeholder' => 'Ingrese direccion')) !!}
+			</div>
 		</div>
 </div>
-
-
 
 
 <div class="form-group">
@@ -147,35 +146,48 @@
 		init(IDFORMMANTENIMIENTO+'{!! $entidad !!}', 'M', '{!! $entidad !!}');
 		$(IDFORMMANTENIMIENTO + '{!! $entidad !!} :input[id="usertype_id"]').focus();
 		configurarAnchoModal('650');
-		/*
-		var personas = new Bloodhound({
-			datumTokenizer: function (d) {
-				return Bloodhound.tokenizers.whitespace(d.value);
-			},
-			queryTokenizer: Bloodhound.tokenizers.whitespace,
-			remote: {
-				url: 'person/employeesautocompleting/%QUERY',
-				filter: function (personas) {
-					return $.map(personas, function (movie) {
-						return {
-							value: movie.value,
-							id: movie.id
-						};
-					});
-				}
-			}
-		});
-		personas.initialize();
-		$('#nombrepersona').typeahead(null,{
-			displayKey: 'value',
-			source: personas.ttAdapter()
-		}).on('typeahead:selected', function (object, datum) {
-			$('#person_id').val(datum.id);
-		});
-		, campos de texto=>'disabled' => 'disabled'			
-		*/
+		evaluarFecha();
+		
 	}); 
 	$('.input-number').on('input', function () { 
     	this.value = this.value.replace(/[^0-9]/g,'');
 	});
+
+	function evaluarFecha(){
+		//fecha actual
+		var fechaActual = new Date();
+		var añoActual = fechaActual.getFullYear();
+		var mesActual = fechaActual.getMonth();
+
+
+		//fecha obtenida del formulario
+		var valoresFechaSel = $('#fecha_nacimiento').val().split('-');
+		if((añoActual-valoresFechaSel[0])<=18 ){
+			console.log("es menor de edad= "+(añoActual-valoresFechaSel[0]));
+			$('#datosApoderado').toggle( 
+				function(e){ 
+					$('#oculto').slideDown();
+					$(this).text('Fecha de Nacimiento:');
+				}, // Separamos las dos funciones con una coma
+			);
+			
+		}
+		/*
+		else{
+			$('#datosApoderado').toggle( 
+				function(e){ 
+					$('#oculto').slideUp();
+					$(this).text('Fecha de Nacimiento:');
+					e.preventDefault();
+				}	// Separamos las dos funciones con una coma
+			);
+		}
+		*/
+
+	}
+	
+	
+
+
+
 </script>

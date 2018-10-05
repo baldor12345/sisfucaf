@@ -89,7 +89,7 @@ class PersonController extends Controller
         $entidad          = 'Persona';
         $title            = $this->tituloAdmin;
         $titulo_registrar = $this->tituloRegistrar;
-        $cboTipo        = [''=>'Todo']+ array('S'=>'Socio', 'SC' => 'Socio/Cliente');
+        $cboTipo        = [''=>'Todo']+ array('S'=>'Socio','C'=>'Cliente' ,'SC' => 'Socio/Cliente');
         $cboSexo        = [''=>'Seleccione']+ array('M'=>'Masculino','F' => 'Femenino');
         $cboEstadoCivil        = [''=>'Seleccione']+ array('S'=>'Soltero','C' => 'Casado', 'V' => 'Viudo');
         $ruta             = $this->rutas;
@@ -106,7 +106,7 @@ class PersonController extends Controller
         $listar         = Libreria::getParam($request->input('listar'), 'NO');
         $entidad        = 'Persona';
         $persona        = null;
-        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio', 'SC' => 'Socio/Cliente');
+        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio','C'=>'Cliente' ,'SC' => 'Socio/Cliente');
         $cboSexo        = [''=>'Seleccione']+ array('M'=>'Masculino','F' => 'Femenino');
         $cboEstadoCivil        = [''=>'Seleccione']+ array('S'=>'Soltero','C' => 'Casado', 'V' => 'Viudo');
         $formData       = array('persona.store');
@@ -150,9 +150,14 @@ class PersonController extends Controller
             $perosna->apellidos        = $request->input('apellidos');
             $perosna->tipo        = $request->input('tipo');
             $perosna->fechai        = $request->input('fechai');
-            $perosna->numero_acciones        = $request->input('numero_acciones');
             $perosna->direccion        = $request->input('direccion');
             $perosna->fecha_nacimiento        = $request->input('fecha_nacimiento');
+
+            $perosna->nombres_apoderado        = $request->input('nombres_apoderado');
+            $perosna->dni_apoderado        = $request->input('dni_apoderado');
+            $perosna->telefono_fijo_apoderado        = $request->input('telefono_fijo_apoderado');
+            $perosna->direccion_apoderado        = $request->input('direccion_apoderado');
+
             $perosna->sexo        = $request->input('sexo');
             $perosna->estado_civil        = $request->input('estado_civil');
             $perosna->ocupacion        = $request->input('ocupacion');
@@ -192,15 +197,15 @@ class PersonController extends Controller
             return $existe;
         }
         $listar         = Libreria::getParam($request->input('listar'), 'NO');
-        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio', 'SC' => 'Socio/Cliente');
         $cboSexo        = [''=>'Seleccione']+ array('M'=>'Masculino','F' => 'Femenino');
         $cboEstadoCivil        = [''=>'Seleccione']+ array('S'=>'Soltero','C' => 'Casado', 'V' => 'Viudo');
+        $cboTipo        = [''=>'Seleccione']+ array('S'=>'Socio','C'=>'Cliente' ,'SC' => 'Socio/Cliente');
         $persona        = Persona::find($id);
         $entidad        = 'Persona';
         $formData       = array('persona.update', $id);
         $formData       = array('route' => $formData, 'method' => 'PUT', 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton          = 'Modificar';
-        return view($this->folderview.'.mant')->with(compact('persona', 'formData', 'entidad', 'boton', 'listar', 'cboTipo','cboSexo','cboEstadoCivil'));
+        return view($this->folderview.'.mant')->with(compact('persona', 'formData', 'entidad', 'boton', 'listar','cboSexo','cboEstadoCivil', 'cboTipo'));
     }
 
     /**
@@ -242,9 +247,14 @@ class PersonController extends Controller
             $perosna->apellidos        = $request->input('apellidos');
             $perosna->tipo        = $request->input('tipo');
             $perosna->fechai        = $request->input('fechai');
-            $perosna->numero_acciones        = $request->input('numero_acciones');
             $perosna->direccion        = $request->input('direccion');
             $perosna->fecha_nacimiento        = $request->input('fecha_nacimiento');
+
+            $perosna->nombres_apoderado        = $request->input('nombres_apoderado');
+            $perosna->dni_apoderado        = $request->input('dni_apoderado');
+            $perosna->telefono_fijo_apoderado        = $request->input('telefono_fijo_apoderado');
+            $perosna->direccion_apoderado        = $request->input('direccion_apoderado');
+
             $perosna->sexo        = $request->input('sexo');
             $perosna->estado_civil        = $request->input('estado_civil');
             $perosna->ocupacion        = $request->input('ocupacion');

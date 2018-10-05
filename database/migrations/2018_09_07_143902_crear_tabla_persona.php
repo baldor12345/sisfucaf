@@ -42,7 +42,6 @@ class CrearTablaPersona extends Migration
             //acciones
             $table->char('tipo',2)->nullable(); // S=>socio, C=>Cliente, 2=>SC
             $table->date('fechai')->nullable();
-            $table->integer('numero_acciones')->nullable(); 
             $table->timestamps();
             $table->softDeletes();
         });

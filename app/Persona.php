@@ -44,4 +44,8 @@ class Persona extends Model
         			->orderBy('codigo', 'ASC')
         			->orderBy('nombres', 'ASC');
     }
+
+    public static function personas($dni){
+        return  Persona::where('dni','=',$dni)->get();
+    }
 }

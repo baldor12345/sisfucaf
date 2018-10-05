@@ -116,6 +116,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('persona/eliminar/{id}/{listarluego}', 'PersonController@eliminar')->name('persona.eliminar');
     Route::resource('persona', 'PersonController', array('except' => array('show')));
 
+<<<<<<< HEAD
     /*CONFIGURACIONES*/
     Route::post('configuraciones/buscar', 'ConfiguracionesController@buscar')->name('configuraciones.buscar');
     Route::get('configuraciones/eliminar/{id}/{listarluego}', 'Configuraciones@eliminar')->name('configuraciones.eliminar');
@@ -124,6 +125,12 @@ Route::group(['middleware' => 'auth'], function () {
     /*ACCIONES*/
     Route::post('acciones/buscar', 'AccionesController@buscar')->name('acciones.buscar');
     Route::resource('acciones', 'AccionesController', array('except' => array('show')));
+=======
+    /*CREDITO*/
+    Route::post('creditos/buscar', 'CreditoController@buscar')->name('creditos.buscar');
+    Route::get('creditos/eliminar/{id}/{listarluego}', 'CreditoController@eliminar')->name('creditos.eliminar');
+    Route::resource('creditos', 'CreditoController', array('except' => array('show')));
+>>>>>>> 7beb2e355f8373df6e97fe03209f412e12ed7b00
 
 });
 
